@@ -7,6 +7,8 @@ should contain all required files and scripts to build a standard Java Web
 Application Archive (WAR).
 
 Instructions:
-- Once you Unzip - mvn clean install and run as Springboot or Java application.
+- in your terminal please enter :      git clone https://github.com/AnuragRi/MultiplicationApplication.git
+- build the application with command : mvn clean install
+- then run as spring boot application.
 - After the application is up and running based on the port please enter this
  URI : http://localhost:[PORT]/multiply (Please enter the port number default is 8080)
