@@ -1,6 +1,5 @@
 package com.betaNxt.mediant;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -11,7 +10,6 @@ import org.springframework.ui.Model;
 import com.betaNxt.mediant.controller.MultiplicationController;
 
 import java.util.List;
-import java.util.ArrayList;
 
 public class MultiplicationControllerTest {
 
@@ -31,7 +29,7 @@ public class MultiplicationControllerTest {
 		when(model.addAttribute("message", "Number should be between 1 to 50.")).thenReturn(model);
 
 		// Act
-		String result = multiplicationController.multiply(model, 55);
+		String result = multiplicationController.multiply(model, String.valueOf(55));
 
 		// Assert
 		assertEquals("multiply", result);
@@ -44,7 +42,7 @@ public class MultiplicationControllerTest {
 				.thenReturn(model);
 
 		// Act
-		String result = multiplicationController.multiply(model, 10);
+		String result = multiplicationController.multiply(model, String.valueOf(10));
 
 		// Assert
 		assertEquals("multiply", result);

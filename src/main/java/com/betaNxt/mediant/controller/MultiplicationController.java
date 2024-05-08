@@ -13,26 +13,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MultiplicationController {
 
     @GetMapping("/multiply")
-    public String multiply(Model model, @RequestParam("number") @Nullable Integer number) {
+    public String multiply(Model model, @RequestParam("number") @Nullable String number) {
         try {
-            List<Integer> multiplicationTable = new ArrayList<>();
-            if (number == null) {
-                model.addAttribute("tutorials", multiplicationTable);
+            if (number == null || number.trim().isEmpty()) {
+                model.addAttribute("message", "Please enter a number.");
                 return "multiply";
             }
-            if (number < 1 || number > 50) {
+            int num = Integer.parseInt(number.trim());
+            if (num < 1 || num > 50) {
                 model.addAttribute("message", "Number should be between 1 to 50.");
                 return "multiply";
-            } else {
-                for (int counter = 1; counter <= 10; counter++) {
-                    multiplicationTable.add(number * counter);
-                }
-                model.addAttribute("tutorials", multiplicationTable);
             }
-
+            List<Integer> multiplicationTable = new ArrayList<>();
+            for (int counter = 1; counter <= 10; counter++) {
+                multiplicationTable.add(num * counter);
+            }
+            model.addAttribute("tutorials", multiplicationTable);
+        } catch (NumberFormatException e) {
+            model.addAttribute("message", "Invalid input. Please enter a valid number.");
         } catch (Exception e) {
             e.printStackTrace();
-            model.addAttribute("message", "Something went wrong while generating multiplation table.");
+            model.addAttribute("message", "Something went wrong while generating multiplication table.");
         }
 
         return "multiply";
