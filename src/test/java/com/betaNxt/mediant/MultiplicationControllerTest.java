@@ -1,7 +1,6 @@
 package com.betaNxt.mediant;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,6 +32,13 @@ public class MultiplicationControllerTest {
 
 		// Assert
 		assertEquals("multiply", result);
+	}
+
+	@Test
+	public void testMultiplyWithAlphabetInput() {
+		String viewName = multiplicationController.multiply(model, "abc");
+		assertEquals("multiply", viewName);
+		verify(model, times(1)).addAttribute(eq("message"), eq("Invalid input, Please enter a valid number."));
 	}
 
 	@Test

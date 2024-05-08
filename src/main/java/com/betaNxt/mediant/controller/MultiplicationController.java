@@ -30,7 +30,7 @@ public class MultiplicationController {
             }
             model.addAttribute("tutorials", multiplicationTable);
         } catch (NumberFormatException e) {
-            model.addAttribute("message", "Invalid input. Please enter a valid number.");
+            model.addAttribute("message", "Invalid input, Please enter a valid number.");
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("message", "Something went wrong while generating multiplication table.");
